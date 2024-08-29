@@ -1,0 +1,29 @@
+﻿version: '3.8'
+
+services:
+  clientapi:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "5050:80"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__DefaultConnection="Server=mysql;Port=3306;Database=ClientDB;User=root;Password=123pass;"
+    depends_on:
+      - mysql
+
+  mysql:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: 123pass
+      MYSQL_DATABASE: ClientDB
+      MYSQL_USER: user
+      MYSQL_PASSWORD: 123pass
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+
+volumes:
+  mysql-data:
