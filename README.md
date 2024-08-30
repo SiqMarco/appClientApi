@@ -94,6 +94,20 @@ curl --location 'http://localhost:5000/api/Clients' \
 --header 'accept: */*'
 ```
 
+Atualiza cliente pelo ID
+```
+curl --location --request PUT 'http://localhost:5000/api/clients/10c5414d-bbbd-436f-a796-cebd53b12289' \
+--header 'Content-Type: application/json' \
+--data '{
+    "name": "Updated Client",
+    "size": "Média"
+}'
+```
+Excluir Cliente pelo ID
+```
+curl --location --request DELETE 'http://localhost:5000/api/clients/10c5414d-bbbd-436f-a796-cebd53b12289'
+```
+
 ## Executando os Testes
 
 Para executar os testes unitários, use o comando:
