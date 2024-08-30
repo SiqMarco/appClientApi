@@ -8,9 +8,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a14c215d-2c6d-4199-9a8d-a7143f96fa6a" name="Changes" comment="add al files in project.">
-      <change afterPath="$PROJECT_DIR$/ClientAPI.API/client-app" afterDir="false" />
-    </list>
+    <list default="true" id="a14c215d-2c6d-4199-9a8d-a7143f96fa6a" name="Changes" comment="added client-app file" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -20,9 +18,13 @@
     <option name="autoShow" value="false" />
   </component>
   <component name="Git.Merge.Settings">
-    <option name="BRANCH" value="origin/main" />
+    <option name="BRANCH" value="appClientApp/main" />
+  </component>
+  <component name="Git.Rebase.Settings">
+    <option name="NEW_BASE" value="appClientApp/main" />
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_COMMON_BRANCH" value="main" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="ROOT_SYNC" value="SYNC" />
   </component>
@@ -51,20 +53,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;.NET Launch Settings Profile.ClientAPI.API.executor&quot;: &quot;Run&quot;,
-    &quot;.NET Launch Settings Profile.ClientAPI.API: React-Frontend.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    ".NET Launch Settings Profile.ClientAPI.API.executor": "Run",
+    ".NET Launch Settings Profile.ClientAPI.API: React-Frontend.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "developer",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected=".NET Launch Settings Profile.ClientAPI.API: React-Frontend">
     <configuration name="ClientAPI.API" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/ClientAPI.API/ClientAPI.API.csproj" />
@@ -123,7 +125,15 @@
       <option name="project" value="LOCAL" />
       <updated>1724957252944</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="added client-app file">
+      <option name="closed" value="true" />
+      <created>1725021722293</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1725021722293</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -136,6 +146,7 @@
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="add projects file" />
     <MESSAGE value="add al files in project." />
-    <option name="LAST_COMMIT_MESSAGE" value="add al files in project." />
+    <MESSAGE value="added client-app file" />
+    <option name="LAST_COMMIT_MESSAGE" value="added client-app file" />
   </component>
 </project>
