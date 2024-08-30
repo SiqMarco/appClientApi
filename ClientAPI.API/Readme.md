@@ -2,7 +2,8 @@
 
 ## Descrição
 
-O ClientAPI é uma API para gerenciamento de clientes, desenvolvida com C#, Entity Framework Core e React no frontend. O projeto utiliza um banco de dados MySQL e inclui scripts para criar e gerenciar a base de dados. Ele foi projetado para ser escalável e fácil de manter, permitindo uma integração eficiente entre o backend e o frontend.
+O ClientAPI é uma API para gerenciamento de clientes, desenvolvida com C#, Entity Framework Core e React no frontend. O projeto utiliza um banco de dados MySQL e inclui scripts para criar e gerenciar a base de dados. Ele foi projetado para ser escalável e fácil de manter, permitindo uma integração eficiente entre o backend e o frontend. \
+Frontend foi desenvolvido com React, utilizando o Axios para realizar as requisições HTTP para a API projeto [ClientApp](https://github.com/SiqMarco/project-ClientApp).
 
 ## Tecnologias Utilizadas
 
@@ -37,8 +38,7 @@ Antes de iniciar, você precisará dos seguintes softwares instalados:
 1. **Clone o repositório:**
 
     ```sh
-    git clone <URL_DO_REPOSITORIO>
-    cd ClientAPI
+    git clone https://github.com/SiqMarco/project-ClientApi
     ```
 
 2. **Configure o banco de dados MySQL:**
@@ -51,7 +51,7 @@ Antes de iniciar, você precisará dos seguintes softwares instalados:
 
 3. **Configure o ambiente Docker:**
     - Construa e inicie os contêineres Docker:
-
+    - Dentro da pasta raiz do projeto ClienAPI.API, execute o comando:
     ```sh
     docker-compose up --build
     ```
@@ -64,9 +64,10 @@ Antes de iniciar, você precisará dos seguintes softwares instalados:
     ```
 
 5. **Inicie a aplicação:**
+   - Dentro da pasta raiz do projeto ClienAPI.API, execute o comando:
 
     ```sh
-    dotnet dotnet run --project ClientAPI.API.csproj
+    dotnet run --project ClientAPI.API.csproj
     ```
 
 ## Executando os Testes

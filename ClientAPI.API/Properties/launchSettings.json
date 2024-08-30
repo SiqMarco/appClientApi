@@ -11,20 +11,9 @@
   "profiles": {
     "ClientAPI.API": {
       "commandName": "Project",
-      "launchBrowser": true,
+      "launchBrowser": false,
       "launchUrl": "api/clientes",
       "applicationUrl": "http://localhost:5000",
-      "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
-      }
-    },
-    "React-Frontend": {
-      "commandName": "Executable",
-      "executablePath": "npm",
-      "workingDirectory": "client-app",
-      "commandLineArgs": "start",
-      "launchBrowser": true,
-      "launchUrl": "http://localhost:3000",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
