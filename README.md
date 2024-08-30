@@ -70,6 +70,30 @@ Antes de iniciar, você precisará dos seguintes softwares instalados:
     dotnet run --project ClientAPI.API.csproj
     ```
 
+## Exemplos de Requests
+Cria novo cliente
+```
+curl --location 'http://localhost:5000/api/Clients' \
+--header 'accept: */*' \
+--header 'Content-Type: application/json' \
+--data '    {
+        "name": "Logitec-12 S/A",
+        "size": "grande"
+    }'
+```
+
+Busca Cliente pelo ID
+```
+curl --location 'http://localhost:5000/api/Clients/5d830ff8-25d7-457f-a0b6-394aca8e86dd' \
+--header 'accept: */*'
+```
+
+Busca todos os clientes
+```
+curl --location 'http://localhost:5000/api/Clients' \
+--header 'accept: */*'
+```
+
 ## Executando os Testes
 
 Para executar os testes unitários, use o comando:
