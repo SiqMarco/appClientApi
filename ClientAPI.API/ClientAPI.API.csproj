@@ -31,6 +31,9 @@
 
   <ItemGroup>
     <Compile Remove="Pages\Clients\Index.cshtml.cs" />
+    <Compile Remove="Exception\ExceptionHandlingMiddleware.cs" />
+    <Compile Remove="ExceptionHandlingMiddleware.cs" />
+    <Compile Remove="Exception\**" />
   </ItemGroup>
 
   <Target Name="PrepublishScript" BeforeTargets="PrepareForPublish">
@@ -42,12 +45,18 @@
     <None Update="client-app/build/**" CopyToPublishDirectory="PreserveNewest" />
     <None Remove="client-app\src\pages\ClientFunction.js" />
     <None Remove="Readme.md" />
+    <None Remove="Exception\**" />
   </ItemGroup>
 
   <ItemGroup>
     <Content Include="..\.dockerignore">
       <Link>.dockerignore</Link>
     </Content>
+    <Content Remove="Exception\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Remove="Exception\**" />
   </ItemGroup>
 
 </Project>

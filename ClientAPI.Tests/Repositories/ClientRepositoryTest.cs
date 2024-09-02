@@ -1,8 +1,8 @@
+using Microsoft.EntityFrameworkCore;
 using ClientAPI.Domain.Entities;
 using ClientAPI.Infrastructure.Data;
 using ClientAPI.Infrastructure.Repositories;
-using Microsoft.EntityFrameworkCore;
-
+using Xunit;
 
 namespace ClientAPI.Tests.Repositories
 {
@@ -16,7 +16,6 @@ namespace ClientAPI.Tests.Repositories
             var options = new DbContextOptionsBuilder<AppDbContext>()
                 .UseInMemoryDatabase(databaseName: "TestDatabase")
                 .Options;
-
             _context = new AppDbContext(options);
             _repository = new ClientRepository(_context);
         }
@@ -24,108 +23,75 @@ namespace ClientAPI.Tests.Repositories
         [Fact]
         public async Task GetAllAsync_ReturnsAllClients()
         {
-            // Arrange
-            var clients = new List<Client>
-            {
-                new Client { Id = Guid.NewGuid(), Name = "Client 1", Size = "Pequena" },
-                new Client { Id = Guid.NewGuid(), Name = "Client 2", Size = "Média" }
-            };
-
-            _context.Clients.AddRange(clients);
+            _context.Clients.Add(new Client { Id = Guid.NewGuid(), Name = "Client 1" });
+            _context.Clients.Add(new Client { Id = Guid.NewGuid(), Name = "Client 2" });
             await _context.SaveChangesAsync();
 
-            // Act
             var result = await _repository.GetAllAsync();
 
-            // Assert
             Assert.Equal(2, result.Count());
+            Assert.Equal("Client 1", result.First().Name);
         }
 
         [Fact]
-        public async Task GetByIdAsync_ExistingId_ReturnsClient()
+        public async Task GetByIdAsync_ClientExists_ReturnsClient()
         {
-            // Arrange
-            var client = new Client { Id = Guid.NewGuid(), Name = "Client 1", Size = "Pequena" };
+            var clientId = Guid.NewGuid();
+            var client = new Client { Id = clientId, Name = "Test Client" };
             _context.Clients.Add(client);
             await _context.SaveChangesAsync();
 
-            // Act
-            var result = await _repository.GetByIdAsync(client.Id);
+            var result = await _repository.GetByIdAsync(clientId);
 
-            // Assert
-            Assert.Equal(client.Name, result.Name);
+            Assert.NotNull(result);
+            Assert.Equal(clientId, result.Id);
         }
 
         [Fact]
-        public async Task GetByIdAsync_NonExistingId_ThrowsInvalidOperationException()
+        public async Task GetByIdAsync_ClientDoesNotExist_ThrowsInvalidOperationException()
         {
-            // Arrange
-            var nonExistingId = Guid.NewGuid();
+            var clientId = Guid.NewGuid();
 
-            // Act & Assert
-            await Assert.ThrowsAsync<InvalidOperationException>(async () => 
-                await _repository.GetByIdAsync(nonExistingId));
+            await Assert.ThrowsAsync<InvalidOperationException>(() => _repository.GetByIdAsync(clientId));
         }
 
         [Fact]
-        public async Task AddAsync_ValidClient_AddsClient()
+        public async Task AddAsync_ValidClient_ReturnsClientWithId()
         {
-            // Arrange
-            var client = new Client { Name = "New Client", Size = "Média" };
+            var client = new Client { Id = Guid.NewGuid(), Name = "New Client" };
 
-            // Act
             var result = await _repository.AddAsync(client);
 
-            // Assert
             Assert.NotNull(result);
-            Assert.Equal(client.Name, result.Name);
+            Assert.Equal(client.Id, result.Id);
+            Assert.Equal(1, _context.Clients.Count());
         }
 
         [Fact]
-        public async Task UpdateAsync_ValidClient_UpdatesClient()
+        public async Task UpdateAsync_ValidClient_ReturnsUpdatedClient()
         {
-            // Arrange
-            var client = new Client { Id = Guid.NewGuid(), Name = "Client 1", Size = "Pequena" };
+            var client = new Client { Id = Guid.NewGuid(), Name = "Client 1" };
             _context.Clients.Add(client);
             await _context.SaveChangesAsync();
 
             client.Name = "Updated Client";
-
-            // Act
             var result = await _repository.UpdateAsync(client);
 
-            // Assert
-            Assert.Equal(client.Name, result.Name);
+            Assert.NotNull(result);
+            Assert.Equal("Updated Client", result.Name);
         }
 
         [Fact]
-        public async Task DeleteAsync_ExistingId_RemovesClient()
+        public async Task DeleteAsync_ClientExists_RemovesClient()
         {
-            // Arrange
-            var client = new Client { Id = Guid.NewGuid(), Name = "Client to Delete", Size = "Pequena" };
+            var clientId = Guid.NewGuid();
+            var client = new Client { Id = clientId, Name = "Test Client" };
             _context.Clients.Add(client);
             await _context.SaveChangesAsync();
 
-            // Act
-            await _repository.DeleteAsync(client.Id);
+            await _repository.DeleteAsync(clientId);
 
-            // Assert
-            var result = await _context.Clients.FindAsync(client.Id);
-            Assert.Null(result);
-        }
-
-        [Fact]
-        public async Task DeleteAsync_NonExistingId_DoesNothing()
-        {
-            // Arrange
-            var nonExistingId = Guid.NewGuid();
-
-            // Act
-            await _repository.DeleteAsync(nonExistingId);
-
-            // Assert
-            // Ensure that no exception is thrown and method completes
-            await Task.CompletedTask;
+            Assert.Equal(0, _context.Clients.Count());
         }
     }
 }

@@ -26,42 +26,25 @@ public class ClientsController : ControllerBase
     public async Task<IActionResult> GetById(Guid id)
     {
         var client = await _clientService.GetByIdAsync(id);
-        if (client == null)
-            return NotFound(new { Message = "Client not found" });
-
         return Ok(client);
     }
 
     [HttpPost]
-    public async Task<IActionResult> Create([FromBody] ClientDto clientDto)
+    public async Task<ClientDto> Create([FromBody] ClientDto clientDto)
     {
-        if (clientDto == null)
-            return BadRequest(new { Message = "Invalid client data" });
-
-        var createdClient = await _clientService.AddAsync(clientDto);
-        return CreatedAtAction(nameof(GetById), new { id = createdClient.Id }, createdClient);
+        return await _clientService.AddAsync(clientDto);
     }
 
     [HttpPut("{id:guid}")]
     public async Task<IActionResult> Update(Guid id, [FromBody] ClientDto clientDto)
     {
-        if (clientDto == null)
-            return BadRequest(new { Message = "Invalid client data" });
-
         var updatedClient = await _clientService.UpdateAsync(id, clientDto);
-        if (updatedClient == null)
-            return NotFound(new { Message = "Client not found" });
-
         return Ok(updatedClient);
     }
 
     [HttpDelete("{id:guid}")]
     public async Task<IActionResult> Delete(Guid id)
     {
-        var client = await _clientService.GetByIdAsync(id);
-        if (client == null)
-            return NotFound(new { Message = "Client not found" });
-
         await _clientService.DeleteAsync(id);
         return NoContent();
     }

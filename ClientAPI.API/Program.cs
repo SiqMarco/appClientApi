@@ -1,3 +1,4 @@
+using ClientAPI.API.ExceptionHandler;
 using ClientAPI.Application.Interface;
 using ClientAPI.Application.Services;
 using ClientAPI.Infrastructure.Data;
@@ -48,7 +49,12 @@ var app = builder.Build();
 // Configuração do pipeline de requisição HTTP
 if (app.Environment.IsDevelopment())
 {
+    app.UseMiddleware<ExceptionHandlingMiddleware>();
+}
+else
+{
     app.UseDeveloperExceptionPage();
+    app.UseHsts();
 }
 app.UseStaticFiles(); // Serve os arquivos estáticos do React
 app.UseRouting();
