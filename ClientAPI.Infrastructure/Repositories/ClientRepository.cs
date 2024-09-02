@@ -2,6 +2,7 @@ using ClientAPI.Domain.Repositories;
 using Microsoft.EntityFrameworkCore;
 using ClientAPI.Domain.Entities;
 using ClientAPI.Infrastructure.Data;
+using Microsoft.VisualBasic.CompilerServices;
 
 namespace ClientAPI.Infrastructure.Repositories;
 
@@ -21,31 +22,66 @@ public class ClientRepository : IClientRepository
 
     public async Task<Client> GetByIdAsync(Guid id)
     {
-        return await _context.Clients.FindAsync(id) ?? throw new InvalidOperationException();
+        try
+        {
+            var client = await _context.Clients.FindAsync(id);
+            if (client == null)
+            {
+                throw new InvalidOperationException($"Falha ao buscar o id {id}, cliente não encontrado.");
+            }
+            return client;
+        }
+        catch (Exception ex)
+        {
+            throw new InvalidOperationException(ex.Message);
+        }
     }
 
     public async Task<Client> AddAsync(Client client)
     {
-        await _context.Clients.AddAsync(client);
-        await _context.SaveChangesAsync();
-        return await _context.Clients.FindAsync(client.Id) ?? throw new InvalidOperationException();
+        try
+        {
+            await _context.AddAsync(client);
+            await _context.SaveChangesAsync();
+            return await GetByIdAsync(client.Id);
+        }
+        catch (Exception ex)
+        {
+            throw new InvalidOperationException("Falha ao salvar novo cliente. " + ex.Message);
+        }
     }
 
     public async Task<Client> UpdateAsync(Client client)
     {
-        _context.Clients.Update(client);
-        await _context.SaveChangesAsync();
-        return client;
+        try
+        {
+            _context.Update(client);
+            await _context.SaveChangesAsync();
+            return client;
+        }
+        catch (DbUpdateException ex)
+        {
+            throw new InvalidOperationException($"Falha na atualização do Id {client.Id}." + ex.Message);
+        }
+        catch (Exception ex)
+        {
+            throw new InvalidOperationException($"Error na atualização do Id {client.Id}" + ex.Message);
+        }
     }
 
     public async Task DeleteAsync(Guid id)
     {
-        var client = await _context.Clients.FindAsync(id);
-        if (client != null)
-        {
-            _context.Clients.Remove(client);
+        try
+        {   
+            var client = await GetByIdAsync(id);
+            _context.Remove(client);
             await _context.SaveChangesAsync();
         }
+        catch (Exception ex)
+        {
+            throw new InvalidOperationException($"Falha ao excluir o ID: {id}. " + ex.Message);
+        }
+
     }
     
 }

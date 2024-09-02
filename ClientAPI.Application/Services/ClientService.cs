@@ -1,7 +1,10 @@
+using System.Net;
 using ClientAPI.Application.DTOs;
 using ClientAPI.Application.Interface;
 using ClientAPI.Domain.Entities;
 using ClientAPI.Domain.Repositories;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 
 namespace ClientAPI.Application.Services;
 
@@ -28,18 +31,16 @@ public class ClientService : IClientService
 
     public async Task<ClientDto> GetByIdAsync(Guid id)
     {
-        var client = await _clientRepository.GetByIdAsync(id);
-        if (client == null)
-        {
-            throw new KeyNotFoundException($"Cliente com ID {id} não encontrado.");
-        }
-        return new ClientDto
-        {
-            Id = client.Id,
-            Name = client.Name,
-            Size = client.Size
-        };
+            var client = await _clientRepository.GetByIdAsync(id);
+            return new ClientDto
+            {
+                Id = client.Id,
+                Name = client.Name,
+                Size = client.Size
+            };
+            
     }
+    
 
     public async Task<ClientDto> AddAsync(ClientDto clientDto)
     {
@@ -67,10 +68,6 @@ public class ClientService : IClientService
             Size = clientDto.Size
         };
         var updatedClient = await _clientRepository.UpdateAsync(client);
-        if (updatedClient == null)
-        {
-            throw new KeyNotFoundException($"Erro ao atualizar o Cliente.");
-        }
         return new ClientDto
         {
             Id = updatedClient.Id,
@@ -83,4 +80,5 @@ public class ClientService : IClientService
     {
         await _clientRepository.DeleteAsync(id);
     }
+    
 }

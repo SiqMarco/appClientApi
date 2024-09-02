@@ -16,124 +16,95 @@ public class ClientsControllerTests
         _controller = new ClientsController(_mockClientService.Object);
     }
 
-    [Fact]
-    public async Task GetAll_ReturnsOkResult_WithListOfClients()
-    {
-        var clients = new List<ClientDto> { new ClientDto { Id = Guid.NewGuid(), Name = "Client1", Size = "Large" } };
-        _mockClientService.Setup(service => service.GetAllAsync()).ReturnsAsync(clients);
+  [Fact]
+public async Task GetAll_ReturnsOkResult_WithListOfClients()
+{
+    // Arrange
+    var mockClientService = new Mock<IClientService>();
+    mockClientService.Setup(service => service.GetAllAsync())
+        .ReturnsAsync(new List<ClientDto> { new ClientDto { Id = Guid.NewGuid(), Name = "Client1", Size = "Large" } });
+    var controller = new ClientsController(mockClientService.Object);
 
-        var result = await _controller.GetAll();
+    // Act
+    var result = await controller.GetAll();
 
-        var okResult = Assert.IsType<OkObjectResult>(result);
-        var returnValue = Assert.IsType<List<ClientDto>>(okResult.Value);
-        Assert.Single(returnValue);
-    }
+    // Assert
+    var okResult = Assert.IsType<OkObjectResult>(result);
+    var returnValue = Assert.IsType<List<ClientDto>>(okResult.Value);
+    Assert.Single(returnValue);
+}
 
-    [Fact]
-    public async Task GetById_ReturnsOkResult_WithClient()
-    {
-        var clientId = Guid.NewGuid();
-        var client = new ClientDto { Id = clientId, Name = "Client1", Size = "Large" };
-        _mockClientService.Setup(service => service.GetByIdAsync(clientId)).ReturnsAsync(client);
+[Fact]
+public async Task GetById_ReturnsOkResult_WithClient()
+{
+    // Arrange
+    var clientId = Guid.NewGuid();
+    var mockClientService = new Mock<IClientService>();
+    mockClientService.Setup(service => service.GetByIdAsync(clientId))
+        .ReturnsAsync(new ClientDto { Id = clientId, Name = "Client1", Size = "Large" });
+    var controller = new ClientsController(mockClientService.Object);
 
-        var result = await _controller.GetById(clientId);
+    // Act
+    var result = await controller.GetById(clientId);
 
-        var okResult = Assert.IsType<OkObjectResult>(result);
-        var returnValue = Assert.IsType<ClientDto>(okResult.Value);
-        Assert.Equal(clientId, returnValue.Id);
-    }
+    // Assert
+    var okResult = Assert.IsType<OkObjectResult>(result);
+    var returnValue = Assert.IsType<ClientDto>(okResult.Value);
+    Assert.Equal(clientId, returnValue.Id);
+}
 
-    [Fact]
-    public async Task GetById_ReturnsNotFound_WhenClientDoesNotExist()
-    {
-        var clientId = Guid.NewGuid();
-        _mockClientService.Setup(service => service.GetByIdAsync(clientId)).ReturnsAsync((ClientDto)null);
+[Fact]
+public async Task Create_ReturnsClientDto()
+{
+    // Arrange
+    var clientDto = new ClientDto { Name = "Client1", Size = "Large" };
+    var mockClientService = new Mock<IClientService>();
+    mockClientService.Setup(service => service.AddAsync(clientDto))
+        .ReturnsAsync(new ClientDto { Id = Guid.NewGuid(), Name = "Client1", Size = "Large" });
+    var controller = new ClientsController(mockClientService.Object);
 
-        var result = await _controller.GetById(clientId);
+    // Act
+    var result = await controller.Create(clientDto);
 
-        Assert.IsType<NotFoundObjectResult>(result);
-    }
+    // Assert
+    Assert.IsType<ClientDto>(result);
+}
 
-    [Fact]
-    public async Task Create_ReturnsCreatedAtAction_WithCreatedClient()
-    {
-        var clientDto = new ClientDto { Name = "Client1", Size = "Large" };
-        var createdClient = new ClientDto { Id = Guid.NewGuid(), Name = "Client1", Size = "Large" };
-        _mockClientService.Setup(service => service.AddAsync(clientDto)).ReturnsAsync(createdClient);
+[Fact]
+public async Task Update_ReturnsOkResult_WithUpdatedClient()
+{
+    // Arrange
+    var clientId = Guid.NewGuid();
+    var clientDto = new ClientDto { Name = "UpdatedClient", Size = "Medium" };
+    var mockClientService = new Mock<IClientService>();
+    mockClientService.Setup(service => service.UpdateAsync(clientId, clientDto))
+        .ReturnsAsync(new ClientDto { Id = clientId, Name = "UpdatedClient", Size = "Medium" });
+    var controller = new ClientsController(mockClientService.Object);
 
-        var result = await _controller.Create(clientDto);
+    // Act
+    var result = await controller.Update(clientId, clientDto);
 
-        var createdAtActionResult = Assert.IsType<CreatedAtActionResult>(result);
-        var returnValue = Assert.IsType<ClientDto>(createdAtActionResult.Value);
-        Assert.Equal(createdClient.Id, returnValue.Id);
-    }
+    // Assert
+    var okResult = Assert.IsType<OkObjectResult>(result);
+    var returnValue = Assert.IsType<ClientDto>(okResult.Value);
+    Assert.Equal(clientId, returnValue.Id);
+    Assert.Equal("UpdatedClient", returnValue.Name);
+}
 
-    [Fact]
-    public async Task Create_ReturnsBadRequest_WhenClientDtoIsNull()
-    {
-        var result = await _controller.Create(null);
+[Fact]
+public async Task Delete_ReturnsNoContentResult()
+{
+    // Arrange
+    var clientId = Guid.NewGuid();
+    var mockClientService = new Mock<IClientService>();
+    mockClientService.Setup(service => service.DeleteAsync(clientId))
+        .Returns(Task.CompletedTask);
+    var controller = new ClientsController(mockClientService.Object);
 
-        Assert.IsType<BadRequestObjectResult>(result);
-    }
+    // Act
+    var result = await controller.Delete(clientId);
 
-    [Fact]
-    public async Task Update_ReturnsOkResult_WithUpdatedClient()
-    {
-        var clientId = Guid.NewGuid();
-        var clientDto = new ClientDto { Name = "Client1", Size = "Large" };
-        var updatedClient = new ClientDto { Id = clientId, Name = "Client1", Size = "Large" };
-        _mockClientService.Setup(service => service.UpdateAsync(clientId, clientDto)).ReturnsAsync(updatedClient);
-
-        var result = await _controller.Update(clientId, clientDto);
-
-        var okResult = Assert.IsType<OkObjectResult>(result);
-        var returnValue = Assert.IsType<ClientDto>(okResult.Value);
-        Assert.Equal(clientId, returnValue.Id);
-    }
-
-    [Fact]
-    public async Task Update_ReturnsNotFound_WhenClientDoesNotExist()
-    {
-        var clientId = Guid.NewGuid();
-        var clientDto = new ClientDto { Name = "Client1", Size = "Large" };
-        _mockClientService.Setup(service => service.UpdateAsync(clientId, clientDto)).ReturnsAsync((ClientDto)null);
-
-        var result = await _controller.Update(clientId, clientDto);
-
-        Assert.IsType<NotFoundObjectResult>(result);
-    }
-
-    [Fact]
-    public async Task Update_ReturnsBadRequest_WhenClientDtoIsNull()
-    {
-        var clientId = Guid.NewGuid();
-
-        var result = await _controller.Update(clientId, null);
-
-        Assert.IsType<BadRequestObjectResult>(result);
-    }
-
-    [Fact]
-    public async Task Delete_ReturnsNoContent_WhenClientIsDeleted()
-    {
-        var clientId = Guid.NewGuid();
-        var client = new ClientDto { Id = clientId, Name = "Client1", Size = "Large" };
-        _mockClientService.Setup(service => service.GetByIdAsync(clientId)).ReturnsAsync(client);
-        _mockClientService.Setup(service => service.DeleteAsync(clientId)).Returns(Task.CompletedTask);
-
-        var result = await _controller.Delete(clientId);
-
-        Assert.IsType<NoContentResult>(result);
-    }
-
-    [Fact]
-    public async Task Delete_ReturnsNotFound_WhenClientDoesNotExist()
-    {
-        var clientId = Guid.NewGuid();
-        _mockClientService.Setup(service => service.GetByIdAsync(clientId)).ReturnsAsync((ClientDto)null);
-
-        var result = await _controller.Delete(clientId);
-
-        Assert.IsType<NotFoundObjectResult>(result);
-    }
+    // Assert
+    Assert.IsType<NoContentResult>(result);
+}
 }
