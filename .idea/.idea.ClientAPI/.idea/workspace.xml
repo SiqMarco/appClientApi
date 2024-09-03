@@ -9,18 +9,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a14c215d-2c6d-4199-9a8d-a7143f96fa6a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/ClientAPI.API/Exception/ExceptionHandlingMiddleware.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ClientAPI.API/ExceptionHandler/ExceptionHandlingMiddleware.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ClientAPI.API/ExceptionHandlingMiddleware.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ClientAPI/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ClientAPI/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientAPI.API/ClientAPI.API.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/ClientAPI.API/ClientAPI.API.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientAPI.API/Controllers/ClientsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClientAPI.API/Controllers/ClientsController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientAPI.API/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClientAPI.API/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientAPI.Application/ClientAPI.Application.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/ClientAPI.Application/ClientAPI.Application.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientAPI.Application/Interface/IClientService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClientAPI.Application/Interface/IClientService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientAPI.Application/Services/ClientService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClientAPI.Application/Services/ClientService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientAPI.Infrastructure/Repositories/ClientRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClientAPI.Infrastructure/Repositories/ClientRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientAPI.Tests/Controller/ClientsControllerTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClientAPI.Tests/Controller/ClientsControllerTests.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClientAPI.Tests/Repositories/ClientRepositoryTest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClientAPI.Tests/Repositories/ClientRepositoryTest.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClientAPI.Tests/Services/ClientServicesTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClientAPI.Tests/Services/ClientServicesTests.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ClientAPI.sln.DotSettings.user" beforeDir="false" afterPath="$PROJECT_DIR$/ClientAPI.sln.DotSettings.user" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -59,9 +50,11 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/81a10a642147436ab5653045af84896743a00/71/728b936c/IActionResult.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/1b445ceb1c5ab1d07b7b55412b10a5e21169ec87228ca8ad8a18a6982f3278/ControllerBase.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/357b04bb21cfefd40d8bcb16cce0bb2492aed1a2394295a550514389f89688/MySqlConnection.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/3b92f859131bde25d0f7a63de08963e995d1e1426e584dfd4b8e833d2d3dba/ExecutionTimer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/3bd4df5aff92cabbc4d630be64227073db1b8539b3a1e47786b4b189d7cdb7/DbContext.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/4b21fc3f8a3abb5d25f06c622276fbec0fd3932f169cc6af520bf5abc6a46b4/DbSet.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/c1cc58cc78a2d269eeb5ef89ead64de20ef815d24de2c8a762b3ef6702092/DefaultInterpolatedStringHandler.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/c3ec25c53b94f51fa21da479c513e551efee2b5ae49a79934686d2bb714d46/TestInvoker.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/f8ca5be75154b04f70b1cca13ec3aa13db1047937aafc852e21fc8f50d822d8/AuthenticationMiddleware.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="KubernetesApiPersistence">{}</component>
@@ -82,6 +75,8 @@
   "keyToString": {
     ".NET Launch Settings Profile.ClientAPI.API.executor": "Run",
     ".NET Launch Settings Profile.ClientAPI.API: React-Frontend.executor": "Run",
+    "3191dc8f-facf-4cbc-99cc-19a9339c04e4.executor": "Debug",
+    "4a0719c1-d2e8-4e06-993f-2539c13e51af.executor": "Debug",
     "92b431b8-3cfb-4de0-8db2-2db2efa276d9.executor": "Debug",
     "Docker.ClientAPI.API: Compose Deployment.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
@@ -125,7 +120,8 @@
       <workItem from="1725052767566" duration="1930000" />
       <workItem from="1725054842891" duration="7000" />
       <workItem from="1725055926506" duration="1381000" />
-      <workItem from="1725062345741" duration="21232000" />
+      <workItem from="1725062345741" duration="21794000" />
+      <workItem from="1725374184520" duration="1839000" />
     </task>
     <task id="LOCAL-00001" summary="add projects file">
       <option name="closed" value="true" />
@@ -192,43 +188,17 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/ClientAPI.API/Exception/ExceptionHandlingMiddleware.cs</url>
-          <line>28</line>
-          <properties documentPath="$PROJECT_DIR$/ClientAPI.API/Exception/ExceptionHandlingMiddleware.cs" containingFunctionPresentation="Method 'HandleExceptionAsync'">
+          <url>file://$PROJECT_DIR$/ClientAPI.Infrastructure/Repositories/ClientRepository.cs</url>
+          <line>27</line>
+          <properties documentPath="$PROJECT_DIR$/ClientAPI.Infrastructure/Repositories/ClientRepository.cs" containingFunctionPresentation="Method 'GetByIdAsync'">
             <startOffsets>
-              <option value="599" />
+              <option value="707" />
             </startOffsets>
             <endOffsets>
-              <option value="645" />
+              <option value="726" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="22" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/ClientAPI.API/Exception/ExceptionHandlingMiddleware.cs</url>
-          <line>22</line>
-          <properties documentPath="$PROJECT_DIR$/ClientAPI.API/Exception/ExceptionHandlingMiddleware.cs" containingFunctionPresentation="Method 'InvokeAsync'">
-            <startOffsets>
-              <option value="440" />
-            </startOffsets>
-            <endOffsets>
-              <option value="480" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="23" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/ClientAPI.API/Exception/ExceptionHandlingMiddleware.cs</url>
-          <line>18</line>
-          <properties documentPath="$PROJECT_DIR$/ClientAPI.API/Exception/ExceptionHandlingMiddleware.cs" containingFunctionPresentation="Method 'InvokeAsync'">
-            <startOffsets>
-              <option value="357" />
-            </startOffsets>
-            <endOffsets>
-              <option value="378" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="24" />
+          <option name="timeStamp" value="39" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

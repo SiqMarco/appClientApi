@@ -23,8 +23,8 @@ namespace ClientAPI.Tests.Repositories
         [Fact]
         public async Task GetAllAsync_ReturnsAllClients()
         {
-            _context.Clients.Add(new Client { Id = Guid.NewGuid(), Name = "Client 1" });
-            _context.Clients.Add(new Client { Id = Guid.NewGuid(), Name = "Client 2" });
+            _context.Clients.Add(new Client { Id = Guid.NewGuid(), Name = "Client 1", Size = "grande"});
+            _context.Clients.Add(new Client { Id = Guid.NewGuid(), Name = "Client 2", Size = "pequena"});
             await _context.SaveChangesAsync();
 
             var result = await _repository.GetAllAsync();
@@ -37,7 +37,7 @@ namespace ClientAPI.Tests.Repositories
         public async Task GetByIdAsync_ClientExists_ReturnsClient()
         {
             var clientId = Guid.NewGuid();
-            var client = new Client { Id = clientId, Name = "Test Client" };
+            var client = new Client { Id = clientId, Name = "Test Client", Size = "media"};
             _context.Clients.Add(client);
             await _context.SaveChangesAsync();
 
@@ -58,7 +58,7 @@ namespace ClientAPI.Tests.Repositories
         [Fact]
         public async Task AddAsync_ValidClient_ReturnsClientWithId()
         {
-            var client = new Client { Id = Guid.NewGuid(), Name = "New Client" };
+            var client = new Client { Id = Guid.NewGuid(), Name = "New Client", Size = "grande"};
 
             var result = await _repository.AddAsync(client);
 
@@ -70,7 +70,7 @@ namespace ClientAPI.Tests.Repositories
         [Fact]
         public async Task UpdateAsync_ValidClient_ReturnsUpdatedClient()
         {
-            var client = new Client { Id = Guid.NewGuid(), Name = "Client 1" };
+            var client = new Client { Id = Guid.NewGuid(), Name = "Client 1" , Size = "grande"};
             _context.Clients.Add(client);
             await _context.SaveChangesAsync();
 
@@ -85,7 +85,7 @@ namespace ClientAPI.Tests.Repositories
         public async Task DeleteAsync_ClientExists_RemovesClient()
         {
             var clientId = Guid.NewGuid();
-            var client = new Client { Id = clientId, Name = "Test Client" };
+            var client = new Client { Id = clientId, Name = "Test Client", Size = "grande"};
             _context.Clients.Add(client);
             await _context.SaveChangesAsync();
 
