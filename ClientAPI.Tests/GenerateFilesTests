@@ -1,0 +1,11 @@
+dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura
+
+dotnet tool install --global dotnet-reportgenerator-globaltool
+~/.dotnet/tools
+export PATH="$PATH:$HOME/.dotnet/tools"
+source ~/.zshrc
+reportgenerator --version
+//Exemplo
+reportgenerator -reports:"caminho/para/o/arquivo/coverage.cobertura" -targetdir:"caminho/para/o/diretorio/de/saida" -reporttypes:Html
+
+reportgenerator -reports:"/Users/marco/Desktop/project-ClientApi/ClientAPI.Tests/TestResults/8ac13bfb-a8b3-48f6-b881-30679f1be83c/coverage.cobertura.xml" -targetdir:"/Users/marco/Desktop/project-ClientApi/ClientAPI.Tests/TestResults/CoverageTestResults" -reporttypes:Html

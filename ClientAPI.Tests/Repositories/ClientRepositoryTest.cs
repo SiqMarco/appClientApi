@@ -23,14 +23,15 @@ namespace ClientAPI.Tests.Repositories
         [Fact]
         public async Task GetAllAsync_ReturnsAllClients()
         {
+            await CleanContext();
             _context.Clients.Add(new Client { Id = Guid.NewGuid(), Name = "Client 1", Size = "grande"});
             _context.Clients.Add(new Client { Id = Guid.NewGuid(), Name = "Client 2", Size = "pequena"});
             await _context.SaveChangesAsync();
 
             var result = await _repository.GetAllAsync();
-
-            Assert.Equal(2, result.Count());
+            Assert.NotNull(result);
             Assert.Equal("Client 1", result.First().Name);
+            Assert.Equal(2, result.Count());
         }
 
         [Fact]
@@ -51,15 +52,14 @@ namespace ClientAPI.Tests.Repositories
         public async Task GetByIdAsync_ClientDoesNotExist_ThrowsInvalidOperationException()
         {
             var clientId = Guid.NewGuid();
-
             await Assert.ThrowsAsync<InvalidOperationException>(() => _repository.GetByIdAsync(clientId));
         }
 
         [Fact]
         public async Task AddAsync_ValidClient_ReturnsClientWithId()
         {
+            await CleanContext();
             var client = new Client { Id = Guid.NewGuid(), Name = "New Client", Size = "grande"};
-
             var result = await _repository.AddAsync(client);
 
             Assert.NotNull(result);
@@ -92,6 +92,12 @@ namespace ClientAPI.Tests.Repositories
             await _repository.DeleteAsync(clientId);
 
             Assert.Equal(0, _context.Clients.Count());
+        }
+        
+        private async Task CleanContext()
+        {
+            _context.Clients.RemoveRange(_context.Clients);
+            await _context.SaveChangesAsync();
         }
     }
 }
