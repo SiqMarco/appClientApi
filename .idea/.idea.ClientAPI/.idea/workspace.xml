@@ -8,10 +8,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a14c215d-2c6d-4199-9a8d-a7143f96fa6a" name="Changes" comment="">
+    <list default="true" id="a14c215d-2c6d-4199-9a8d-a7143f96fa6a" name="Changes" comment="removed unused flies.">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ClientAPI/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ClientAPI/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ClientAPI.API/Exception/ExceptionHandlingMiddleware.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientAPI.API/ExceptionHandlingMiddleware.cs" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,6 +45,7 @@
 }</component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/ClientAPI.API/Exception/ExceptionHandlingMiddleware.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/marco/Desktop/project-ClientApi/ClientAPI.API/Exception/ExceptionHandlingMiddleware.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/81a10a642147436ab5653045af84896743a00/71/728b936c/IActionResult.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/1b445ceb1c5ab1d07b7b55412b10a5e21169ec87228ca8ad8a18a6982f3278/ControllerBase.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/357b04bb21cfefd40d8bcb16cce0bb2492aed1a2394295a550514389f89688/MySqlConnection.cs" root0="FORCE_HIGHLIGHTING" />
@@ -162,7 +162,15 @@
       <option name="project" value="LOCAL" />
       <updated>1725050889548</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="removed unused flies.">
+      <option name="closed" value="true" />
+      <created>1725378297834</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1725378297835</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -181,7 +189,8 @@
     <MESSAGE value="added client-app file" />
     <MESSAGE value="added file ds_store" />
     <MESSAGE value="added adjustment in readem file" />
-    <option name="LAST_COMMIT_MESSAGE" value="added adjustment in readem file" />
+    <MESSAGE value="removed unused flies." />
+    <option name="LAST_COMMIT_MESSAGE" value="removed unused flies." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
