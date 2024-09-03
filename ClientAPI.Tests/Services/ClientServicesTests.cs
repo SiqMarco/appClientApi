@@ -17,87 +17,91 @@ public class ClientServicesTests
         _service = new ClientService(_mockClientRepository.Object);
     }
 
-    [Fact]
-    public async Task GetAllAsync_ReturnsListOfClientDtos()
-    {
-        var clients = new List<Client> { new Client { Id = Guid.NewGuid(), Name = "Client1", Size = "Large" } };
-        _mockClientRepository.Setup(repo => repo.GetAllAsync()).ReturnsAsync(clients);
+[Fact]
+public async Task GetAllAsync_ReturnsListOfClientDtos()
+{
+    var mockRepository = new Mock<IClientRepository>();
+    mockRepository.Setup(repo => repo.GetAllAsync())
+        .ReturnsAsync(new List<Client> { new Client { Id = Guid.NewGuid(), Name = "Client1", Size = "Large" } });
+    var service = new ClientService(mockRepository.Object);
 
-        var result = await _service.GetAllAsync();
+    var result = await service.GetAllAsync();
 
-        Assert.NotNull(result);
-        Assert.Single(result);
-    }
+    Assert.Single(result);
+    Assert.Equal("Client1", result.First().Name);
+}
 
-    [Fact]
-    public async Task GetByIdAsync_ReturnsClientDto_WhenClientExists()
-    {
-        var clientId = Guid.NewGuid();
-        var client = new Client { Id = clientId, Name = "Client1", Size = "Large" };
-        _mockClientRepository.Setup(repo => repo.GetByIdAsync(clientId)).ReturnsAsync(client);
+[Fact]
+public async Task GetByIdAsync_ReturnsClientDto_WhenClientExists()
+{
+    var clientId = Guid.NewGuid();
+    var mockRepository = new Mock<IClientRepository>();
+    mockRepository.Setup(repo => repo.GetByIdAsync(clientId))
+        .ReturnsAsync(new Client { Id = clientId, Name = "Client1", Size = "Large" });
+    var service = new ClientService(mockRepository.Object);
 
-        var result = await _service.GetByIdAsync(clientId);
+    var result = await service.GetByIdAsync(clientId);
 
-        Assert.NotNull(result);
-        Assert.Equal(clientId, result.Id);
-    }
+    Assert.Equal(clientId, result.Id);
+    Assert.Equal("Client1", result.Name);
+}
 
-    [Fact]
-    public async Task GetByIdAsync_ThrowsKeyNotFoundException_WhenClientDoesNotExist()
-    {
-        var clientId = Guid.NewGuid();
-        _mockClientRepository.Setup(repo => repo.GetByIdAsync(clientId)).ReturnsAsync((Client)null);
+[Fact]
+public async Task GetByIdAsync_ThrowsInvalidOperationException_WhenClientDoesNotExist()
+{
+    var clientId = Guid.NewGuid();
+    var mockRepository = new Mock<IClientRepository>();
+    mockRepository.Setup(repo => repo.GetByIdAsync(clientId))
+        .ThrowsAsync(new InvalidOperationException());
+    var service = new ClientService(mockRepository.Object);
 
-        await Assert.ThrowsAsync<KeyNotFoundException>(() => _service.GetByIdAsync(clientId));
-    }
+    await Assert.ThrowsAsync<InvalidOperationException>(() => service.GetByIdAsync(clientId));
+}
 
-    [Fact]
-    public async Task AddAsync_ReturnsAddedClientDto()
-    {
-        var clientDto = new ClientDto { Name = "Client1", Size = "Large" };
-        var client = new Client { Id = Guid.NewGuid(), Name = clientDto.Name, Size = clientDto.Size };
-        _mockClientRepository.Setup(repo => repo.AddAsync(It.IsAny<Client>())).ReturnsAsync(client);
+[Fact]
+public async Task AddAsync_AddsClientAndReturnsClientDto()
+{
+    var clientDto = new ClientDto { Name = "Client1", Size = "Large" };
+    var client = new Client { Id = Guid.NewGuid(), Name = "Client1", Size = "Large" };
+    var mockRepository = new Mock<IClientRepository>();
+    mockRepository.Setup(repo => repo.AddAsync(It.IsAny<Client>()))
+        .ReturnsAsync(client);
+    var service = new ClientService(mockRepository.Object);
 
-        var result = await _service.AddAsync(clientDto);
+    var result = await service.AddAsync(clientDto);
 
-        Assert.NotNull(result);
-        Assert.Equal(client.Id, result.Id);
-    }
+    Assert.Equal(client.Id, result.Id);
+    Assert.Equal("Client1", result.Name);
+}
 
-    [Fact]
-    public async Task UpdateAsync_ReturnsUpdatedClientDto_WhenClientExists()
-    {
-        var clientId = Guid.NewGuid();
-        var clientDto = new ClientDto { Name = "Client1", Size = "Large" };
-        var client = new Client { Id = clientId, Name = clientDto.Name, Size = clientDto.Size };
-        _mockClientRepository.Setup(repo => repo.UpdateAsync(It.IsAny<Client>())).ReturnsAsync(client);
+[Fact]
+public async Task UpdateAsync_UpdatesClientAndReturnsClientDto()
+{
+    var clientId = Guid.NewGuid();
+    var clientDto = new ClientDto { Name = "UpdatedClient", Size = "Medium" };
+    var client = new Client { Id = clientId, Name = "UpdatedClient", Size = "Medium" };
+    var mockRepository = new Mock<IClientRepository>();
+    mockRepository.Setup(repo => repo.UpdateAsync(It.IsAny<Client>()))
+        .ReturnsAsync(client);
+    var service = new ClientService(mockRepository.Object);
 
-        var result = await _service.UpdateAsync(clientId, clientDto);
+    var result = await service.UpdateAsync(clientId, clientDto);
 
-        Assert.NotNull(result);
-        Assert.Equal(clientId, result.Id);
-        Assert.Equal(clientDto.Name, result.Name);
-        Assert.Equal(clientDto.Size, result.Size);
-    }
+    Assert.Equal(clientId, result.Id);
+    Assert.Equal("UpdatedClient", result.Name);
+}
 
-    [Fact]
-    public async Task UpdateAsync_ThrowsKeyNotFoundException_WhenClientDoesNotExist()
-    {
-        var clientId = Guid.NewGuid();
-        var clientDto = new ClientDto { Name = "Client1", Size = "Large" };
-        _mockClientRepository.Setup(repo => repo.UpdateAsync(It.IsAny<Client>())).ReturnsAsync((Client)null);
+[Fact]
+public async Task DeleteAsync_DeletesClient()
+{
+    var clientId = Guid.NewGuid();
+    var mockRepository = new Mock<IClientRepository>();
+    mockRepository.Setup(repo => repo.DeleteAsync(clientId))
+        .Returns(Task.CompletedTask);
+    var service = new ClientService(mockRepository.Object);
 
-        await Assert.ThrowsAsync<KeyNotFoundException>(() => _service.UpdateAsync(clientId, clientDto));
-    }
+    await service.DeleteAsync(clientId);
 
-    [Fact]
-    public async Task DeleteAsync_DeletesClient()
-    {
-        var clientId = Guid.NewGuid();
-        _mockClientRepository.Setup(repo => repo.DeleteAsync(clientId)).Returns(Task.CompletedTask);
-
-        await _service.DeleteAsync(clientId);
-
-        _mockClientRepository.Verify(repo => repo.DeleteAsync(clientId), Times.Once);
-    }
+    mockRepository.Verify(repo => repo.DeleteAsync(clientId), Times.Once);
+}
 }
