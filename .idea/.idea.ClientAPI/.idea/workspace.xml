@@ -10,9 +10,8 @@
   <component name="ChangeListManager">
     <list default="true" id="a14c215d-2c6d-4199-9a8d-a7143f96fa6a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ClientAPI/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ClientAPI/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientAPI.Tests/Repositories/ClientRepositoryTest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClientAPI.Tests/Repositories/ClientRepositoryTest.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientAPI.Tests/Services/ClientServicesTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClientAPI.Tests/Services/ClientServicesTests.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientAPI.sln.DotSettings.user" beforeDir="false" afterPath="$PROJECT_DIR$/ClientAPI.sln.DotSettings.user" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClientAPI.API/Exception/ExceptionHandlingMiddleware.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClientAPI.API/ExceptionHandlingMiddleware.cs" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,26 +70,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    ".NET Launch Settings Profile.ClientAPI.API.executor": "Run",
-    ".NET Launch Settings Profile.ClientAPI.API: React-Frontend.executor": "Run",
-    "3191dc8f-facf-4cbc-99cc-19a9339c04e4.executor": "Debug",
-    "4a0719c1-d2e8-4e06-993f-2539c13e51af.executor": "Debug",
-    "92b431b8-3cfb-4de0-8db2-2db2efa276d9.executor": "Debug",
-    "Docker.ClientAPI.API: Compose Deployment.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "developer",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;.NET Launch Settings Profile.ClientAPI.API.executor&quot;: &quot;Run&quot;,
+    &quot;.NET Launch Settings Profile.ClientAPI.API: React-Frontend.executor&quot;: &quot;Run&quot;,
+    &quot;3191dc8f-facf-4cbc-99cc-19a9339c04e4.executor&quot;: &quot;Debug&quot;,
+    &quot;4a0719c1-d2e8-4e06-993f-2539c13e51af.executor&quot;: &quot;Debug&quot;,
+    &quot;92b431b8-3cfb-4de0-8db2-2db2efa276d9.executor&quot;: &quot;Debug&quot;,
+    &quot;Docker.ClientAPI.API: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;developer&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
-  <component name="RunManager" selected=".NET Launch Settings Profile.ClientAPI.API">
+}</component>
+  <component name="RunManager">
     <configuration name="ClientAPI.API" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/ClientAPI.API/ClientAPI.API.csproj" />
       <option name="LAUNCH_PROFILE_TFM" value="net8.0" />
