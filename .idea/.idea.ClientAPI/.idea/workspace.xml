@@ -8,9 +8,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a14c215d-2c6d-4199-9a8d-a7143f96fa6a" name="Changes" comment="removed unused flies.">
+    <list default="true" id="a14c215d-2c6d-4199-9a8d-a7143f96fa6a" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/ClientAPI.Tests/GenerateFilesTests" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ClientAPI/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ClientAPI/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientAPI.API/Exception/ExceptionHandlingMiddleware.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClientAPI.Tests/ClientAPI.Tests.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/ClientAPI.Tests/ClientAPI.Tests.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClientAPI.Tests/Repositories/ClientRepositoryTest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClientAPI.Tests/Repositories/ClientRepositoryTest.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClientAPI.sln.DotSettings.user" beforeDir="false" afterPath="$PROJECT_DIR$/ClientAPI.sln.DotSettings.user" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,8 +47,7 @@
   }
 }</component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/ClientAPI.API/Exception/ExceptionHandlingMiddleware.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Users/marco/Desktop/project-ClientApi/ClientAPI.API/Exception/ExceptionHandlingMiddleware.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/marco/Desktop/project-ClientApi/ClientAPI.Tests/Repositories/ClientRepositoryTest.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/81a10a642147436ab5653045af84896743a00/71/728b936c/IActionResult.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/1b445ceb1c5ab1d07b7b55412b10a5e21169ec87228ca8ad8a18a6982f3278/ControllerBase.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/357b04bb21cfefd40d8bcb16cce0bb2492aed1a2394295a550514389f89688/MySqlConnection.cs" root0="FORCE_HIGHLIGHTING" />
@@ -55,6 +57,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/c1cc58cc78a2d269eeb5ef89ead64de20ef815d24de2c8a762b3ef6702092/DefaultInterpolatedStringHandler.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/c3ec25c53b94f51fa21da479c513e551efee2b5ae49a79934686d2bb714d46/TestInvoker.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/f8ca5be75154b04f70b1cca13ec3aa13db1047937aafc852e21fc8f50d822d8/AuthenticationMiddleware.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file:///var/folders/v3/f1d_s7dn2h96gt48ly_tp__80000gn/T/SourceGeneratedDocuments/FA45188E66F087B1E0506231/Microsoft.CodeAnalysis.Razor.Compiler/Microsoft.NET.Sdk.Razor.SourceGenerators.RazorSourceGenerator/Pages_Clients_Index_cshtml.g.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="KubernetesApiPersistence">{}</component>
   <component name="KubernetesApiProvider">{
@@ -70,26 +73,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;.NET Launch Settings Profile.ClientAPI.API.executor&quot;: &quot;Run&quot;,
-    &quot;.NET Launch Settings Profile.ClientAPI.API: React-Frontend.executor&quot;: &quot;Run&quot;,
-    &quot;3191dc8f-facf-4cbc-99cc-19a9339c04e4.executor&quot;: &quot;Debug&quot;,
-    &quot;4a0719c1-d2e8-4e06-993f-2539c13e51af.executor&quot;: &quot;Debug&quot;,
-    &quot;92b431b8-3cfb-4de0-8db2-2db2efa276d9.executor&quot;: &quot;Debug&quot;,
-    &quot;Docker.ClientAPI.API: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;developer&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    ".NET Launch Settings Profile.ClientAPI.API.executor": "Run",
+    ".NET Launch Settings Profile.ClientAPI.API: React-Frontend.executor": "Run",
+    "2632aab7-7b12-4312-af67-54a07f77832d.executor": "Debug",
+    "3191dc8f-facf-4cbc-99cc-19a9339c04e4.executor": "Debug",
+    "4a0719c1-d2e8-4e06-993f-2539c13e51af.executor": "Debug",
+    "92b431b8-3cfb-4de0-8db2-2db2efa276d9.executor": "Debug",
+    "Docker.ClientAPI.API: Compose Deployment.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "developer",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
-  <component name="RunManager">
+}]]></component>
+  <component name="RunManager" selected=".NET Launch Settings Profile.ClientAPI.API">
     <configuration name="ClientAPI.API" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/ClientAPI.API/ClientAPI.API.csproj" />
       <option name="LAUNCH_PROFILE_TFM" value="net8.0" />
@@ -121,6 +125,8 @@
       <workItem from="1725055926506" duration="1381000" />
       <workItem from="1725062345741" duration="21794000" />
       <workItem from="1725374184520" duration="1839000" />
+      <workItem from="1725379363031" duration="530000" />
+      <workItem from="1725379987681" duration="9144000" />
     </task>
     <task id="LOCAL-00001" summary="add projects file">
       <option name="closed" value="true" />
@@ -170,7 +176,15 @@
       <option name="project" value="LOCAL" />
       <updated>1725378297835</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="removed Excepetion folder.">
+      <option name="closed" value="true" />
+      <created>1725378799338</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1725378799338</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -190,25 +204,7 @@
     <MESSAGE value="added file ds_store" />
     <MESSAGE value="added adjustment in readem file" />
     <MESSAGE value="removed unused flies." />
-    <option name="LAST_COMMIT_MESSAGE" value="removed unused flies." />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/ClientAPI.Infrastructure/Repositories/ClientRepository.cs</url>
-          <line>27</line>
-          <properties documentPath="$PROJECT_DIR$/ClientAPI.Infrastructure/Repositories/ClientRepository.cs" containingFunctionPresentation="Method 'GetByIdAsync'">
-            <startOffsets>
-              <option value="707" />
-            </startOffsets>
-            <endOffsets>
-              <option value="726" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="39" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="removed Excepetion folder." />
+    <option name="LAST_COMMIT_MESSAGE" value="removed Excepetion folder." />
   </component>
 </project>
